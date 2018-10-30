@@ -1,0 +1,28 @@
+{
+  "name": "@iiddoo/nodejs-example-app",
+  "version": "1.0.0",
+  "description": "A seed of example REST API Node.js application using mongoose (for MongoDB)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node -r dotenv/config server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iiddoo/nodejs-example-app.git"
+  },
+  "author": "“Ido <“iiddoolleevv@gmail.com”>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iiddoo/nodejs-example-app/issues"
+  },
+  "homepage": "https://github.com/iiddoo/nodejs-example-app#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.7",
+    "winston": "^3.1.0",
+    "winston-daily-rotate-file": "^3.4.1"
+  }
+}
