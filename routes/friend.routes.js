@@ -3,8 +3,7 @@ const express = require('express');
 const services = require('../services');
 
 const router = express.Router();
-const { friendService } = services;
-const { loggerService } = services;
+const { friendService, loggerService } = services;
 
 router.get('/friends', (req, res) => {
   loggerService.log({
