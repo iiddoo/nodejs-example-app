@@ -20,4 +20,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/api', routes);
 
-app.listen(port, () => console.log(`listening on http://localhost:${port}`));
+const server = app.listen(port, () => console.log(`listening on http://localhost:${port}`));
+
+module.exports = server;

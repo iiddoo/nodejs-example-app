@@ -7,7 +7,7 @@ const { friendService } = services;
 const { loggerService } = services;
 
 router.get('/friends', (req, res) => {
-  loggerService.logger.log({
+  loggerService.log({
     level: 'info',
     message: 'Requested all friends'
   });
