@@ -4,12 +4,20 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const friendSchema = new Schema(
   {
-    id: String,
-    name: String,
-    description: String,
+    id: {
+      type: String
+    },
+    name: {
+      type: String,
+      required: true
+    },
+    description: {
+      type: String,
+      required: true
+    },
   },
   {
-    collection: 'friends',
+    collection: process.env.MONGO_FRIENDS_COLLECTION,
     read: 'nearest',
   },
 );
