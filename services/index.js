@@ -7,7 +7,7 @@ const { loggerService } = require('./logger');
     try {
         await mongo.connect();
     } catch (error) {
-        console.error(error);
+        loggerService.error(error);
     }
 })();
 
