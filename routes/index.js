@@ -7,5 +7,6 @@ router.get('/', (req, res) => {
 });
 
 router.use('/', require('./friend.routes'));
+router.use('/', require('./login.routes'));
 
 module.exports = router;
