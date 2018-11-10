@@ -1,6 +1,8 @@
 
 const mongoose = require('mongoose');
 
+const { usersCollection } = require('./config');
+
 const { Schema } = mongoose;
 const userSchema = new Schema(
   {
@@ -12,18 +14,32 @@ const userSchema = new Schema(
     uid: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
+        unique: true
     },
-    role: {
-        type: String,
+    admin: {
+        type: Boolean,
         required: true,
-        trim: true
+        default: false
     },
+    lastLogin: {
+      type: Date,
+      required: true,
+      default: new Date()
+    }
   },
   {
-    collection: process.env.MONGO_FRIENDS_COLLECTION,
+    collection: usersCollection,
     read: 'nearest',
   },
 );
-const Friend = mongoose.model('Friend', friendSchema);
-module.exports = Friend;
+
+userSchema.pre('save', next => {
+  const user = this;
+  user.lastLogin = new Date();
+  next();
+});
+
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;

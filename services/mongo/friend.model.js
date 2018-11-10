@@ -1,6 +1,8 @@
 
 const mongoose = require('mongoose');
 
+const { friendsCollection } = require('./config');
+
 const { Schema } = mongoose;
 const friendSchema = new Schema(
   {
@@ -17,9 +19,10 @@ const friendSchema = new Schema(
     },
   },
   {
-    collection: process.env.MONGO_FRIENDS_COLLECTION,
+    collection: friendsCollection,
     read: 'nearest',
   },
 );
 const Friend = mongoose.model('Friend', friendSchema);
+
 module.exports = Friend;
