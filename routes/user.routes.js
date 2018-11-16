@@ -1,7 +1,7 @@
 
 const express = require('express');
 const { loggerService } = require('../services');
-const { userService } = require('../services').mongoService;
+const { userService } = require('../services').mongo;
 
 const router = express.Router();
 

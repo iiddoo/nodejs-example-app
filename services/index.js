@@ -1,5 +1,5 @@
 
-const mongoService = require('./mongo');
+const mongo = require('./mongo');
 const { loggerService } = require('./logger');
 const authService = require('./auth');
 
@@ -7,12 +7,12 @@ const authService = require('./auth');
 // connect to mongodb
 (async () => {
     try {
-        await mongoService.connect();
+        await mongo.connect();
     } catch (error) {
         loggerService.error(error);
     }
 })();
 
-module.exports = { mongoService,
+module.exports = { mongo,
                    loggerService,
                    authService };
