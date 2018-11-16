@@ -1,39 +1,22 @@
 const jwt = require('jsonwebtoken');
+const login = require('./login.service');
+const { secret } = require('./config');
 
-const {
-  issuer,
-  expiresIn,
-  secret
-} = require('./config');
-
-module.exports = {
-  validateToken: (req, res, next) => {
-    const authorizationHeaader = req.headers.authorization;
-    let result;
-    if (authorizationHeaader) {
-      const token = req.headers.authorization.split(' ')[1]; // Bearer <token>
-      const options = {
-        expiresIn,
-        issuer
-      };
-      try {
-        // verify makes sure that the token hasn't expired and has been issued by us
-        result = jwt.verify(token, secret, options);
-
-        // Let's pass back the decoded token to the request object
-        req.decoded = result;
-        // We call next to pass execution to the subsequent middleware
+module.exports = async (req, res, next) => {
+  // const token = req.body.token || req.query.token || req.headers['x-access-token'];
+  const token = req.headers['x-access-token'];
+  // decode token
+  if (token) {
+    // verifies secret and checks exp
+    jwt.verify(token, secret, async (err, decoded) => {
+      if (err) {
+        return res.status(401).json({"error": true, "message": 'Unauthorized access. ' });
+      } else {
+        req.user = decoded;
         next();
-      } catch (err) {
-        // Throw an error just in case anything goes wrong with verification
-        throw new Error(err);
       }
-    } else {
-      result = { 
-        error: `Authentication error. Token required.`,
-        status: 401
-      };
-      res.status(401).send(result);
-    }
+    });
+  } else {
+    return res.status(401).json({"error": true, "message": 'Unauthorized access. ' });
   }
 };

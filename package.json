@@ -4,8 +4,8 @@
   "description": "A seed of example REST API Node.js application using mongoose (for MongoDB)",
   "main": "server.js",
   "scripts": {
-    "test": "node -r dotenv/config ./node_modules/.bin/mocha **/*.test.js --exit",
-    "start": "node -r dotenv/config server.js"
+    "test": "node ./node_modules/.bin/mocha **/*.test.js --exit",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
     "chai": "^4.2.0",
     "eslint": "^5.8.0",
     "mocha": "^5.2.0",
-    "supertest": "^3.3.0"
+    "supertest": "^3.3.0",
+    "username": "^4.0.0"
   }
 }

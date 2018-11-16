@@ -1,14 +1,18 @@
 
-const mongo = require('./mongo');
+const mongoService = require('./mongo');
 const { loggerService } = require('./logger');
+const authService = require('./auth');
+
 
 // connect to mongodb
 (async () => {
     try {
-        await mongo.connect();
+        await mongoService.connect();
     } catch (error) {
         loggerService.error(error);
     }
 })();
 
-module.exports = { friendService: mongo.friendService, loggerService };
+module.exports = { mongoService,
+                   loggerService,
+                   authService };

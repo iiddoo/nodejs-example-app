@@ -1,9 +1,10 @@
 
 const express = require('express');
-const services = require('../services');
+const { loggerService } = require('../services');
+const { friendService } = require('../services').mongoService;
+
 
 const router = express.Router();
-const { friendService, loggerService } = services;
 
 router.get('/friends', (req, res) => {
   loggerService.log({

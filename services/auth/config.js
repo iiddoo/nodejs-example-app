@@ -2,6 +2,7 @@
 module.exports = {
     expiresIn: process.env.JWT_EXPIRES,
     issuer: process.env.JWT_ISSUER,
-    secret: process.env.JWT_SECRET
+    secret: process.env.JWT_SECRET,
+    environment: process.env.NODE_ENV
 };
  

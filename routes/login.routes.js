@@ -1,9 +1,10 @@
 const express = require('express');
-const services = require('../services');
+const { login } = require('../services').authService;
 
 const router = express.Router();
-const { validate } = services;
 
-
+router.get('/login', (req, res) => {
+  login(req, res);
+});
 
 module.exports = router;
