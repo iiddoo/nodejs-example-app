@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const routes = require('./routes');
@@ -20,6 +22,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/api', routes);
 
-const server = app.listen(port, () => console.log(`listening on http://localhost:${port}`));
+const server = app.listen(port, () => console.log(`Listening on: ${port}`));
 
 module.exports = server;

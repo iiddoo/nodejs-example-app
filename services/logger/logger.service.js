@@ -19,7 +19,7 @@ const logger = winston.createLogger({
     new winston.transports.File({ filename: path.join(loggerFolder, '/error.log'), level: 'error' }),
     new winston.transports.DailyRotateFile({
       filename: path.join(loggerFolder, '/%DATE%.log'),
-      datePattern: 'DD-MM-HH-YYYY',
+      datePattern: 'DD-MM-YYYY',
       zippedArchive: false,
       maxSize: '20m',
       maxFiles: '2d'

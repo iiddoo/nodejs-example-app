@@ -1,6 +1,8 @@
 
 const mongo = require('./mongo');
 const { loggerService } = require('./logger');
+const authService = require('./auth');
+
 
 // connect to mongodb
 (async () => {
@@ -11,4 +13,6 @@ const { loggerService } = require('./logger');
     }
 })();
 
-module.exports = { friendService: mongo.friendService, loggerService };
+module.exports = { mongo,
+                   loggerService,
+                   authService };

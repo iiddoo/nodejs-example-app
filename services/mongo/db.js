@@ -23,7 +23,8 @@ const connect = () => {
       autoReconnect: true,
       reconnectTries: 1000000,
       reconnectInterval: 3000,
-      useNewUrlParser: true
+      useNewUrlParser: true,
+      useCreateIndex: true,
     })
     .then(() => {
       console.log('MongoDB is connected');
