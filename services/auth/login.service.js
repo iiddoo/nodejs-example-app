@@ -30,7 +30,7 @@ module.exports = async (req, res) => {
     // update db with new login user
     await userService.login(user);
     // send back the new token
-    res.status(200).json(token);  
+    res.status(200).json({token});  
   } catch (error) {
     return res.status(500).json({"error": true, "message": 'Unable to authenticate user. ' });
   }

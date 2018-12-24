@@ -8,6 +8,8 @@ const friend = {
     description: 'TestFriend description',
 };
 
+let token = null;
+
 beforeEach(() => {
     process.env.MONGO_FRIENDS_COLLECTION = 'test-friends';
 });
@@ -26,11 +28,25 @@ describe('Server', () => {
         });
     });
 
+    describe('Login', () => {
+        it('Should get login token', done => {
+            request(server)
+                .get('/api/login')
+                .expect(200)
+                .expect(res => {
+                    expect(res.body).to.have.property('token');
+                    token = res.body.token;
+                })
+                .end(done);
+        });
+    });
+
     describe('POST /api/friend', () => {
         it('Should add new friend', done => {
             request(server)
                 .post('/api/friend')
                 .send(friend)
+                .set('x-access-token', token)
                 .expect(201)
                 .expect(res => {
                     expect(res.body).to.include(friend);
